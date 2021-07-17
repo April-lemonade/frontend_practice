@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:data-wow-offset="http://www.w3.org/1999/xhtml">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
+  <meta charset="UTF-8">
+  <title>登录</title>
+  <style>
+      .container {
+          background-color: #f7f7f7;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+      }
+
+      .nav {
+          margin: 0px;
+          width: 100%;
+          height: 50px;
+          box-shadow: 0 2px 3px -1px #c7c7c7;
+      }
+
+      .bg {
+          border-width: 0px;
+          position: absolute;
+          left: 726px;
+          top: 79px;
+          width: 523px;
+          height: 453px;
+          background-color: #f7f7f7;
+          overflow: hidden;
+      }
+
+      .login_bg {
+          border-width: 0px;
+          position: absolute;
+          left: 57px;
+          top: 64px;
+          width: 410px;
+          height: 400px;
+          overflow: hidden;
+          background-color: #f7f7f7;
+          animation-duration: 500ms
+      }
+
+      .register_bg {
+          border-width: 0px;
+          position: absolute;
+          left: 57px;
+          top: 10px;
+          width: 415px;
+          height: 480px;
+          overflow: hidden;
+          background-color: #f7f7f7;
+          animation-duration: 500ms;
+      }
+
+      .forget_bg {
+          border-width: 0px;
+          position: absolute;
+          left: 57px;
+          top: 30px;
+          width: 410px;
+          height: 480px;
+          overflow: hidden;
+          background-color: #f7f7f7;
+          animation-duration: 500ms;
+      }
+
+      .tele_btn {
+          position: absolute;
+          left: 50px;
+          top: 10px;
+          width: 118px;
+          height: 33px;
+          border-style: solid;
+          border-color: #c7c7c7;
+          border-width: 1px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .pwd_btn {
+          position: absolute;
+          left: 250px;
+          top: 10px;
+          width: 118px;
+          height: 33px;
+          border-style: solid;
+          border-color: #c7c7c7;
+          border-width: 1px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .selected {
+          background-color: #c7c7c7;
+          color: white;
+      }
+
+      .login_panel {
+          border-width: 0px;
+          position: absolute;
+          left: 0px;
+          top: 80px;
+          width: 420px;
+          height: 200px;
+          overflow: hidden;
+          animation-duration: 300ms;
+      }
+
+      .username {
+          border-style: solid;
+          border-width: 1px;
+          border-color: #f7f7f7;
+          margin: 5%;
+          display: flex;
+          flex-direction: row;
+      }
+
+      .pwd {
+          border-style: solid;
+          border-width: 1px;
+          border-color: #f7f7f7;
+          margin: 5%;
+          display: flex;
+          flex-direction: row;
+      }
+
+      .input1 {
+          height: 40px;
+      }
+
+      .login_btn {
+          position: absolute;
+          left: 87px;
+          top: 274px;
+          width: 250px;
+          height: 45px;
+          display: flex;
+          border-style: solid;
+          border-width: 1px;
+          border-color: #c7c7c7;
+          background-color: #c7c7c7;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .register_text {
+          position: absolute;
+          left: 380px;
+          top: 350px;
+          width: 32px;
+          height: 20px;
+          display: flex;
+          color: #7F7F7F;
+      }
+
+      .forget_text {
+          border-width: 0px;
+          position: absolute;
+          left: 30px;
+          top: 350px;
+          width: 80px;
+          height: 20px;
+          display: flex;
+          color: #797979;
+          overflow: hidden;
+          animation-duration: 300ms;
+      }
+
+      .text {
+          position: absolute;
+          left: 220px;
+          top: 410px;
+          width: 100px;
+          height: 20px;
+          display: flex;
+          color: #7F7F7F;
+      }
+
+      .register_btn {
+          position: absolute;
+          left: 87px;
+          top: 350px;
+          width: 250px;
+          height: 45px;
+          display: flex;
+          border-style: solid;
+          border-width: 1px;
+          border-color: #c7c7c7;
+          background-color: #c7c7c7;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .reset_btn {
+          position: absolute;
+          left: 87px;
+          top: 300px;
+          width: 250px;
+          height: 45px;
+          display: flex;
+          border-style: solid;
+          border-width: 1px;
+          border-color: #c7c7c7;
+          background-color: #c7c7c7;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+  </style>
+</head>
+<body>
+<script src="js/vue.js"></script>
+
+<div id="app" class="container">
+  <div class="nav">
+    <h2>This is a LOGO</h2>
+  </div>
+  <div class="bg">
+    <div class="login_bg animate__animated" :class="currentType=='login'?'animate__slideInUp':'animate__slideOutDown'">
+      <div id="tele" v-on:click="isTele=true" class="tele_btn" :class="{selected:isTele}">
+        手机号登录
+      </div>
+      <div id="pwd" v-on:click="isTele=false" class="pwd_btn" :class="{selected:!isTele}">
+        密码登录
+      </div>
+      <div class="login_panel" v-show="isTele">
+        <div class="animate__animated" :class="isTele?'animate__slideInRight':'animate__slideOutRight'">
+          <div class="username">
+            <div class="input">
+              <input type="tel" size="51%" class="input1" placeholder="请输入手机号">
+            </div>
+          </div>
+          <div class="pwd">
+            <div class="input">
+              <input type="text" size="35%" class="input1" placeholder="请输入验证码">
+            </div>
+            <div style="margin-left: 5%;margin-top: 2%">
+              <button>发送验证码</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="login_panel">
+        <div class="animate__animated" :class="!isTele?'animate__slideInLeft':'animate__slideOutLeft'">
+          <div class="username">
+            <div class="input">
+              <input type="tel" size="51%" class="input1" placeholder="请输入账号">
+            </div>
+          </div>
+          <div class="pwd">
+            <div class="input">
+              <input type="password" size="51%" class="input1" placeholder="请输入登录密码">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="login_btn">
+        登录
+      </div>
+      <div class="register_text" v-on:click="currentType='register'">注册</div>
+      <div class="forget_text animate__animated" :class="!isTele?'animate__slideInLeft':'animate__slideOutLeft'"
+           v-on:click="currentType='forget'">
+        忘记密码
+      </div>
+    </div>
+    <div class="register_bg animate__animated"
+         :class="currentType=='register'?'animate__slideInUp':'animate__slideOutDown'">
+      <div class="username">
+        <div class="input">
+          <input type="text" size="51%" class="input1" placeholder="设置用户名">
+        </div>
+      </div>
+      <div class="username">
+        <div class="input">
+          <input type="tel" size="51%" class="input1" placeholder="请输入手机号码">
+        </div>
+      </div>
+      <div class="pwd">
+        <div class="input">
+          <input type="text" size="33%" class="input1" placeholder="请输入验证码">
+        </div>
+        <div style="margin-left: 5%;margin-top: 2%">
+          <button>发送验证码</button>
+        </div>
+      </div>
+      <div class="pwd">
+        <div class="input">
+          <input type="password" size="51%" class="input1" placeholder="设置你的登录密码">
+        </div>
+      </div>
+      <div class="pwd">
+        <div class="input">
+          <input type="password" size="51%" class="input1" placeholder="请再次输入你的密码">
+        </div>
+      </div>
+      <div class="register_btn">
+        注册
+      </div>
+      <div class="text">已有账号？</div>
+      <div style="position: absolute;left: 300px;top: 410px;width: 100px;height: 20px;display: flex;color: #7F7F7F;"
+           v-on:click="currentType='login'">快速登录>>
+      </div>
+    </div>
+    <div class="forget_bg animate__animated"
+         :class="currentType=='forget'?'animate__slideInUp':'animate__slideOutDown'">
+      <div class="username">
+        <div class="input">
+          <input type="tel" size="51%" class="input1" placeholder="请输入手机号码">
+        </div>
+      </div>
+      <div class="pwd">
+        <div class="input">
+          <input type="text" size="33%" class="input1" placeholder="请输入验证码">
+        </div>
+        <div style="margin-left: 5%;margin-top: 2%">
+          <button>发送验证码</button>
+        </div>
+      </div>
+      <div class="pwd">
+        <div class="input">
+          <input type="password" size="51%" class="input1" placeholder="设置你的登录密码">
+        </div>
+      </div>
+      <div class="pwd">
+        <div class="input">
+          <input type="password" size="51%" class="input1" placeholder="请再次输入你的密码">
+        </div>
+      </div>
+      <div class="reset_btn">
+        重置密码
+      </div>
+      <div style="position: absolute;left: 320px;top: 370px;width: 100px;height: 20px;display: flex;color: #7F7F7F;"
+           v-on:click="currentType='login'">返回登录
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      isTele: true,
+      currentType: 'login',
+    },
+    methods: {}
+  })
+</script>
+
+</body>
+
+<script>
+  wow = new WOW();
+  wow.init();
+</script>
+</html>
